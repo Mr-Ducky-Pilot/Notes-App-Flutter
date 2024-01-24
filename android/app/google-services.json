@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "136297605897",
+    "project_id": "mynotes-mr-ducky-pilot",
+    "storage_bucket": "mynotes-mr-ducky-pilot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136297605897:android:3c76d0d27c67283e6581d8",
+        "android_client_info": {
+          "package_name": "com.mrduckypilot.mynotes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqg8x2ReZGfGDgRtrOa9-V4vy9RAPOtmI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
