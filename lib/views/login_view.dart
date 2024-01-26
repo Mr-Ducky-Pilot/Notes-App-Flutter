@@ -2,11 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 // To show error codes to the user lets use SnackBars!! Look at optional stuff you can do with SnackBars!!
-void showErrorSnack(BuildContext context, String message) {
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    content: Text(message),
-  ));
-}
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -35,8 +30,17 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
+    void showErrorSnack(BuildContext context, String message) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(message),
+      ));
+    }
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      appBar: AppBar(
+        title: const Text('Login'),
+        backgroundColor: const Color.fromARGB(255, 123, 43, 169),
+      ),
       body: Column(
         children: [
           TextField(
@@ -69,13 +73,15 @@ class _LoginViewState extends State<LoginView> {
                     email: email, password: password);
                 String message = "Duck Logged in Successfully!";
                 showErrorSnack(context, message);
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil('/notesview', (_) => false);
                 // print(userCredential);
               } on FirebaseAuthException catch (e) {
                 if (e.code == 'user-not-found') {
                   String message =
                       "Duck Doesn't Exist! Please Register instead";
                   showErrorSnack(context, message);
-                } else if (e.code == 'wrong-password') {
+                } else if (e.code == 'INVALID-LOGIN-CREDENTIALS') {
                   String message =
                       "Quack Quack, you have entered a wrong password!";
                   showErrorSnack(context, message);

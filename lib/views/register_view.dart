@@ -38,6 +38,7 @@ class _RegisterViewState extends State<RegisterView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Duck Register'),
+        backgroundColor: const Color.fromARGB(255, 123, 43, 169),
       ),
       body: Column(
         children: [
