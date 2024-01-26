@@ -66,24 +66,20 @@ class _LoginViewState extends State<LoginView> {
               final email = _email.text;
               final password = _password.text;
               try {
-                // final userCredential = await FirebaseAuth.instance
-                //     .signInWithEmailAndPassword(
-                //         email: email, password: password);
                 await FirebaseAuth.instance.signInWithEmailAndPassword(
                     email: email, password: password);
                 String message = "Duck Logged in Successfully!";
                 showErrorSnack(context, message);
                 Navigator.of(context)
                     .pushNamedAndRemoveUntil('/notesview', (_) => false);
-                // print(userCredential);
               } on FirebaseAuthException catch (e) {
                 if (e.code == 'user-not-found') {
                   String message =
                       "Duck Doesn't Exist! Please Register instead";
                   showErrorSnack(context, message);
-                } else if (e.code == 'INVALID-LOGIN-CREDENTIALS') {
+                } else if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
                   String message =
-                      "Quack Quack, you have entered a wrong password!";
+                      "Quack Quack, you have entered a wrong email or password!";
                   showErrorSnack(context, message);
                 } else {
                   String message =
